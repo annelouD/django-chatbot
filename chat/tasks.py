@@ -1,5 +1,5 @@
 import time
-
+# from ChatbotScraper import SmartTripy
 import requests
 from asgiref.sync import async_to_sync
 from celery import shared_task
@@ -12,6 +12,14 @@ channel_layer = get_channel_layer()
 def add(channel_name, x, y):
     message = '{}+{}={}'.format(x, y, int(x) + int(y))
     async_to_sync(channel_layer.send)(channel_name, {"type": "chat.message", "message": message})
+
+
+
+# @shared_task
+# def chat(channel_name, xyz):
+
+#     async_to_sync(channel_layer.send)(channel_name, {"type": "chat.message", "message": message})
+
 
 
 @shared_task
